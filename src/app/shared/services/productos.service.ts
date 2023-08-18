@@ -20,7 +20,6 @@ export class ProductosService {
       .pipe(catchError(this.handlerError));
   }
   modificar(producto: Productos): Observable<Productos> {
-    console.log('mod');
     console.log(producto);
     return this.http
       .patch<Productos>('http://localhost:3000/productos', producto)

@@ -1,0 +1,40 @@
+<p class="titulo">{{ titulo }}</p>
+<form >
+  <mat-form-field>
+    <mat-label>Id Estudiante</mat-label>
+    <input matInput formControlName="IdEstudiante"/>
+  </mat-form-field>
+
+  <mat-form-field>
+    <mat-label>Nombre</mat-label>
+    <input matInput formControlName="Nombre" />
+  </mat-form-field>
+
+  <mat-form-field>
+    <mat-label>Apellido 1</mat-label>
+    <input matInput formControlName="Apellido1" />
+  </mat-form-field>
+
+  <mat-form-field>
+    <mat-label>Apellido 2</mat-label>
+    <input matInput formControlName="Apellido2" />
+  </mat-form-field>
+
+  <mat-form-field>
+    <mat-label>Fecha Nacimiento</mat-label>
+    <input type="date" matInput formControlName="FechaNah" />
+  </mat-form-field>
+
+  <mat-form-field>
+    <mat-label>Genero</mat-label>
+    <input  matInput formControlName="Genero" />
+  </mat-form-field>
+
+
+</form>
+
+<div>
+  <button mat-button color="primary" [mat-dialog-close]="true">Buscar Estudiante</button>
+  <button mat-button color="primary" [mat-dialog-close]>Agegar Cursos</button>
+</div>
+

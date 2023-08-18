@@ -103,13 +103,10 @@ class ProductosController {
       }
 
       try {
-        cat = await categoriaRepo.findOneOrFail({where: {id:categoria}})
+        cat = await categoriaRepo.findOneOrFail({ where: { id: categoria } });
       } catch (error) {
-        return resp
-          .status(404)
-          .json({ mensaje: 'No existe la categoria' });
+        return resp.status(404).json({ mensaje: 'No existe la categoria' });
       }
-      
 
       const fecha = new Date();
 

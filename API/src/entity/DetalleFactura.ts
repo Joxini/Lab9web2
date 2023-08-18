@@ -1,6 +1,6 @@
-import { Column, Entity, JoinColumn, ManyToOne, OneToMany } from "typeorm";
-import { Factura } from "./Factura";
-import { Producto } from "./Producto";
+import { Column, Entity, JoinColumn, ManyToOne, OneToMany } from 'typeorm';
+import { Factura } from './Factura';
+import { Producto } from './Producto';
 
 @Entity()
 export class DetalleFactura {
@@ -12,10 +12,10 @@ export class DetalleFactura {
   cant: number;
 
   @ManyToOne(() => Factura, (factura) => factura.detallesFactura)
-  @JoinColumn({ name: "idFactura" })
+  @JoinColumn({ name: 'idFactura' })
   factura: Factura;
 
   @ManyToOne(() => Producto, (producto) => producto.detallesFactura)
-  @JoinColumn({ name: "idProducto" })
+  @JoinColumn({ name: 'idProducto' })
   producto: Producto;
 }

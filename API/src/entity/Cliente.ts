@@ -6,10 +6,10 @@ import {
   OneToMany,
   OneToOne,
   PrimaryColumn,
-} from "typeorm";
-import { Persona } from "./Persona";
-import { TipoCliente } from "./TipoCliente";
-import { Factura } from "./Factura";
+} from 'typeorm';
+import { Persona } from './Persona';
+import { TipoCliente } from './TipoCliente';
+import { Factura } from './Factura';
 
 @Entity()
 export class Cliente {
@@ -22,8 +22,8 @@ export class Cliente {
   @Column()
   fechaIngreso: Date;
 
-  @OneToOne(() => Persona, { cascade: ["insert", "update"] })
-  @JoinColumn({ name: "cedula" })
+  @OneToOne(() => Persona, { cascade: ['insert', 'update'] })
+  @JoinColumn({ name: 'cedula' })
   persona: Persona;
 
   @OneToMany(() => Factura, (factura) => factura.cliente)

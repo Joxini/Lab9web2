@@ -8,6 +8,9 @@ import { ProductosComponent } from './productos/productos.component';
 import { MaterialModule } from 'src/app/material.module';
 import { AdminProductosComponent } from './productos/admin-productos/admin-productos.component';
 import { ReactiveFormsModule } from '@angular/forms';
+import { MatriculaComponent } from './matricula/matricula.component';
+import { AdminCursosComponent } from './matricula/admin-cursos/admin-cursos.component';
+import { AdminEstudiantesComponent } from './matricula/admin-estudiantes/admin-estudiantes.component';
 
 @NgModule({
   declarations: [
@@ -15,6 +18,9 @@ import { ReactiveFormsModule } from '@angular/forms';
     ClientesComponent,
     ProductosComponent,
     AdminProductosComponent,
+    MatriculaComponent,
+    AdminCursosComponent,
+    AdminEstudiantesComponent,
   ],
   imports: [
     ReactiveFormsModule,

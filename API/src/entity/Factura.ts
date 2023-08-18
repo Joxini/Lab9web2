@@ -5,9 +5,9 @@ import {
   ManyToOne,
   OneToMany,
   PrimaryGeneratedColumn,
-} from "typeorm";
-import { Cliente } from "./Cliente";
-import { DetalleFactura } from "./DetalleFactura";
+} from 'typeorm';
+import { Cliente } from './Cliente';
+import { DetalleFactura } from './DetalleFactura';
 
 @Entity()
 export class Factura {
@@ -21,11 +21,11 @@ export class Factura {
   idCliente: string;
 
   @ManyToOne(() => Cliente, (cliente) => cliente.facturas)
-  @JoinColumn({ name: "idCliente" })
+  @JoinColumn({ name: 'idCliente' })
   cliente: Cliente;
 
   @OneToMany(() => DetalleFactura, (detalle) => detalle.factura, {
-    cascade: ["insert", "update"],
+    cascade: ['insert', 'update'],
   })
   detallesFactura: DetalleFactura[];
 

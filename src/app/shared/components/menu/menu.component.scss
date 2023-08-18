@@ -1,21 +1,24 @@
 *{
-  background-color: brown;
+  background-color: rgb(184, 112, 112);
+  text-align: center;
 }
 ul{
   margin: 0px;
+  
 }
 ul>li>a{
   text-decoration: none;
+  color: rgb(204, 212, 95);
 
 }
 ul>li>a:hover{
-  color: black;
+  color: rgb(0, 0, 0);
   text-decoration: solid;
-
+  
 }
 
 ul>li{
 list-style: none;
 display: inline-block;
-padding: 5px 10px;
+padding: 10px 50px;
 }

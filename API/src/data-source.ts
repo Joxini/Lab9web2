@@ -8,6 +8,9 @@ import { TipoCliente } from './entity/TipoCliente';
 import { Factura } from './entity/Factura';
 import { DetalleFactura } from './entity/DetalleFactura';
 import { CategoriaProducto } from './entity/CategoriaProducto';
+import { Estudiante } from './entity/Estudiante';
+import { Cursos } from './entity/Curso';
+import { Matricula } from './entity/Matricula';
 
 export const AppDataSource = new DataSource({
   type: 'mysql',
@@ -27,6 +30,9 @@ export const AppDataSource = new DataSource({
     Factura,
     DetalleFactura,
     CategoriaProducto,
+    Estudiante,
+    Cursos,
+    Matricula
   ],
   migrations: [],
   subscribers: [],
