@@ -1,5 +1,7 @@
-<p class="titulo">{{ titulo }}</p>
-<form >
+<div>
+  <button mat-button color="primary" (click)="abrirDialog()">Buscar Estudiante</button>
+</div>
+<form [formGroup]="estudianteform.baseForm">
   <mat-form-field>
     <mat-label>Id Estudiante</mat-label>
     <input matInput formControlName="IdEstudiante"/>
@@ -27,14 +29,14 @@
 
   <mat-form-field>
     <mat-label>Genero</mat-label>
-    <input  matInput formControlName="Genero" />
+    <input matInput formControlName="Genero" />
   </mat-form-field>
 
 
 </form>
 
 <div>
-  <button mat-button color="primary" [mat-dialog-close]="true">Buscar Estudiante</button>
-  <button mat-button color="primary" [mat-dialog-close]>Agegar Cursos</button>
+  <button mat-button color="primary" >Agregar Cursos</button>
 </div>
+
 
