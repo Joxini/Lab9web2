@@ -42,7 +42,10 @@ export class AdminEstudiantesComponent {
         this.dataSource.data = datos;
       },
       (error) => {
-        this.mensajeria.error(error);
+        this.mensajeria.error("No hay datos que mostrar");
+        setTimeout(() => {
+          this.mensajeria.clear(); 
+        }, 1500);
       }
     );
   }

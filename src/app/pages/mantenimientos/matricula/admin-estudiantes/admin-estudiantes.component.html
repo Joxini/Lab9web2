@@ -32,7 +32,7 @@
     <!-- Fecha Nac -->
     <ng-container matColumnDef="FechaNah">
         <th mat-header-cell *matHeaderCellDef>Fecha de Nacimiento</th>
-        <td mat-cell *matCellDef="let element">{{ element.FechaNah }}</td>
+        <td mat-cell *matCellDef="let element">{{ element.FechaNah | date:'yyyy/MM/dd' }}</td>
     </ng-container>
 
     <!-- Genero -->

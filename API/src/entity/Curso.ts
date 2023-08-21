@@ -14,11 +14,6 @@ export class Cursos {
   NombreCurso: string; 
 
   @Column({nullable:false})
-  @MaxLength(100, { message: 'Debe ser menos de 100 caracter' })
-  @IsNotEmpty({message: "Debes de indicar la descripcion"})
-  DescipcionCurso: string;
-
-  @Column({nullable:false})
   @IsNotEmpty({message: "Debes indicar los creditos"})
   Creditos: number;
 

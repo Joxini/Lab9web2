@@ -20,14 +20,6 @@ class MatriculaController {
     }
   };
 
-  static getById = async (req: Request, resp: Response) => {
-  
-}
-
-static Add = async (req: Request, resp: Response) => {
-  
-}
-
 }
 
 export default MatriculaController;

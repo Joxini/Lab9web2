@@ -16,6 +16,14 @@ export class EstudianteService {
       .pipe(catchError(this.handlerError));
   }
 
+  guardarEstudianteConCursos(estudiante: any): Observable<Estudiante>{
+    alert(estudiante)
+    
+    return this.http
+    .patch<Estudiante>('http://localhost:3000/Estudiante', estudiante)
+    .pipe()
+  }
+
 
   handlerError(error: HttpErrorResponse) {
     let mensaje = 'Error desconocido, reporte al adminstrador.';

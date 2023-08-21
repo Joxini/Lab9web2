@@ -8,7 +8,7 @@ class CursosController {
     try {
       const CursosRepo = AppDataSource.getRepository(Cursos);
 
-      const cursos= await CursosRepo.find();
+      const cursos= await CursosRepo.find({where:{Estado:true}});
 
       if (cursos.length == 0) {
         return resp.status(404).json({ mensaje: 'No se encontró resultados.' });
