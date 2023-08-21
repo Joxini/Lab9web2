@@ -21,5 +21,5 @@ export class Cursos {
   Estado: boolean;
 
   @OneToMany(() => Matricula, matricula => matricula.curso)
-  matriculas: Matricula[];
+  estudiantes: Matricula[];
 }

@@ -1,15 +1,11 @@
 import { IsNotEmpty } from 'class-validator';
-import { Column, Entity, JoinColumn, ManyToOne, PrimaryColumn } from 'typeorm';
+import { Column, Entity, JoinColumn, ManyToOne, PrimaryColumn, PrimaryGeneratedColumn } from 'typeorm';
 import { Estudiante } from './Estudiante';
 import { Cursos } from './Curso';
 
 @Entity()
 export class Matricula {
-  @PrimaryColumn()
-  @IsNotEmpty({
-    message:
-      'Debes de indicar el Id de Matricula',
-  })
+  @PrimaryGeneratedColumn()
   IdMatricula: number;
 
   @Column({ nullable: false })
@@ -19,21 +15,17 @@ export class Matricula {
   })
   IdEstudiante: number;
 
-  @Column({ nullable: false })
+  @Column({ nullable: false})
   @IsNotEmpty({
     message: 'Debes de indicar el Id de Curso',
   })
   IdCurso: number;
 
-  @Column({ nullable: false })
-  FechaMatricula: Date;
-
-  
-  @ManyToOne(() => Estudiante, (estudiante) => estudiante.matriculas)
+  @ManyToOne(() => Estudiante, (estudiante) => estudiante.cursos)
   @JoinColumn({ name: 'IdEstudiante' })
   estudiante: Estudiante;
 
-  @ManyToOne(() => Cursos, (curso) => curso.matriculas)
+  @ManyToOne(() => Cursos, (curso) => curso.estudiantes)
   @JoinColumn({ name: 'IdCurso' })
   curso: Cursos;
 }

@@ -2,6 +2,7 @@ import { Request, Response } from 'express';
 import { AppDataSource } from '../data-source';
 import { validate } from 'class-validator';
 import { Estudiante } from '../entity/Estudiante';
+import { Matricula } from '../entity/Matricula';
 
 class EstudianteController {
   static getAll = async (req: Request, resp: Response) => {
@@ -46,6 +47,53 @@ class EstudianteController {
     } catch (error) {
       return resp.status(400).json({ mensaje: error });
     }
+  };
+
+  static update = async (req: Request, resp: Response) => {
+    try {
+      const { IdEstudiante, cursos } = req.body;
+    
+      const EstudianteRepo = AppDataSource.getRepository(Estudiante);
+      const estudiante = await EstudianteRepo.findOne({
+        where: { IdEstudiante },
+        relations: {cursos:true}, 
+      });
+    
+      if (!estudiante) {
+        return resp
+          .status(400)
+          .json({ mensaje: 'El estudiante no existe en la base de datos' });
+      }
+    
+      const matriculasToUpdate = cursos.map((curs) => {
+        const matricula = estudiante.cursos.find(
+          (m) => m.IdCurso === curs.IdCurso
+        );
+    
+        if (!matricula) {
+          const newMatricula = new Matricula();
+          newMatricula.IdEstudiante = IdEstudiante;
+          newMatricula.IdCurso = curs.IdCurso;
+          return newMatricula;
+        }
+      });
+    
+      const matriculasFiltradas = matriculasToUpdate.filter(
+        (matricula) => matricula !== undefined
+      );
+
+      estudiante.cursos.push(...matriculasFiltradas);
+      try {
+        await EstudianteRepo.save(estudiante);
+        return resp.status(201).json({ mensaje: 'Cursos agregados correctamente' });
+      } catch (error) {
+        return resp.status(400).json({ mensaje: "Error al agregarle los cursos"});
+      }
+
+    } catch (error) {
+      return resp.status(400).json({ mensaje: error.mensaje });
+    }
+    
   };
 
 }

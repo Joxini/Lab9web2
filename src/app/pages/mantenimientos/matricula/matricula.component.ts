@@ -76,7 +76,7 @@ export class MatriculaComponent {
       Apellido2: this.selectedStudent.Apellido2,
       FechaNah: formatDate(this.selectedStudent.FechaNah, 'yyyy-MM-dd', 'en'),
       Genero: this.selectedStudent.Genero,
-      estado: true,
+      Estado: true,
     });
   }
 
@@ -129,27 +129,43 @@ export class MatriculaComponent {
 
   guardar() {
     if (!this.selectedStudent) {
-      alert('Indique el estudiante');
+      this.mensajeria.error('Indique el estudiante');
+      setTimeout(() => {
+        this.mensajeria.clear();
+      }, 2000);
     } else if (this.selectedcursos.length === 0) {
-      alert('Indique al menos 1 curso');
+      this.mensajeria.error('Indique al menos 1 curso');
+      setTimeout(() => {
+        this.mensajeria.clear();
+      }, 2000);
     } else {
      try {
-        const estudianteGuardar = {
-          estudiante: this.selectedStudent,
-          cursos: this.selectedcursos
-        }
-        alert(estudianteGuardar.cursos)
+      const estudianteGuardar = {
+        IdEstudiante: this.selectedStudent.IdEstudiante,
+        cursos: this.selectedcursos.map(curso => ({ IdCurso: curso.IdCurso }))
+      };
+      
         this.srvEstudiante.guardarEstudianteConCursos(estudianteGuardar).subscribe(
           (response) => {
-            console.log('Estudiante guardado exitosamente', response);
+            const fecha = new Date();
+            this.mensajeria.success('Cursos asignados exitosamente');
+            this.estudianteform.baseForm.patchValue({
+              IdEstudiante: 0,
+              Nombre: "",
+              Apellido1: "",
+              Apellido2: "",
+              FechaNah: fecha,
+              Genero: "",
+              Estado: true,
+            })
+            this.seleccionado = false
+          this.selectedcursos = [];
+           this.CargarListaCursos();
           },
           (error) => {
-            console.error('Error al guardar el estudiante', error);
+            this.mensajeria.error(error.error.mensaje);
           }
         ); 
-      
-
-
      } catch (error) {
       this.mensajeria.error('Error al Guadar, intentelo de nuevo');
       setTimeout(() => {

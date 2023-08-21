@@ -16,11 +16,9 @@ export class EstudianteService {
       .pipe(catchError(this.handlerError));
   }
 
-  guardarEstudianteConCursos(estudiante: any): Observable<Estudiante>{
-    alert(estudiante)
-    
+  guardarEstudianteConCursos(data: any): Observable<any>{
     return this.http
-    .patch<Estudiante>('http://localhost:3000/Estudiante', estudiante)
+    .patch<Estudiante>('http://localhost:3000/Estudiante', data)
     .pipe()
   }
 

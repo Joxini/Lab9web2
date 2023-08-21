@@ -36,7 +36,7 @@ export class Estudiante {
   Estado: Boolean;
 
   @OneToMany(() => Matricula, (matricula) => matricula.estudiante, {
-    cascade: ['update'],
+    cascade: ['insert', 'update'],
   })
-  matriculas: Matricula[];
+  cursos: Matricula[];
 }
